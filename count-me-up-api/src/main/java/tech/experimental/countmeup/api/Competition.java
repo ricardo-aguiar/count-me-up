@@ -20,6 +20,8 @@ public class Competition
      * Constructs a new competition
      * @param competitionId The compentition ID, default to a new UUID if it is null.
      * @param candidates A list of candidates taking part in the competition.
+     * @param startDate The competition start date
+     * @param endDate The competition end date
      */
     @JsonCreator
     public Competition(@JsonProperty("competitionId") final String competitionId,
@@ -55,7 +57,7 @@ public class Competition
     }
 
     @Override
-    public boolean equals(final Object other)
+    public final boolean equals(final Object other)
     {
         if (this == other)
         {
@@ -73,7 +75,7 @@ public class Competition
     }
 
     @Override
-    public int hashCode()
+    public final int hashCode()
     {
         return Objects.hash(competitionId, candidates, startDate, endDate);
     }

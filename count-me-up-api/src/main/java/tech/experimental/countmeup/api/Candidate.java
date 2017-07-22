@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- *
+ * A candidate that can take part in a competition.
  */
 public class Candidate
 {
@@ -17,7 +17,7 @@ public class Candidate
 
     /**
      * Constructs a new Candidate.
-     * @param candidateId The candidate unique identifier
+     * @param candidateId The candidate unique identifier or if <code>null</code> it will be generated
      * @param name The candidate name
      * @param numberOfVotesReceived the number of votes received by the cadidante
      */

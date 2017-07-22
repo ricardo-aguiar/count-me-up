@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Competition Registration request
+ * Competition Registration request for consumers
  */
 public class CompetitionRegistrationRequest
 {

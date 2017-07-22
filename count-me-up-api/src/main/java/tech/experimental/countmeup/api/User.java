@@ -16,7 +16,7 @@ public class User
 
     /**
      * Constructs a new User
-     * @param userId The user unique id
+     * @param userId The user unique id or if <code>null</code> an UUID will be generated.
      * @param name The user name
      */
     @JsonCreator
