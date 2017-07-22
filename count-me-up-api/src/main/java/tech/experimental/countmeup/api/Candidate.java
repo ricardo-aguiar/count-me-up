@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  *
@@ -25,9 +26,24 @@ public class Candidate
                      @JsonProperty("name") final String name,
                      @JsonProperty("numberOfVotesReceived") final long numberOfVotesReceived)
     {
-        this.candidateId = candidateId;
+        this.candidateId = candidateId == null ? UUID.randomUUID().toString() : candidateId;
         this.name = name;
         this.numberOfVotesReceived = numberOfVotesReceived;
+    }
+
+    public String getCandidateId()
+    {
+        return candidateId;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public long getNumberOfVotesReceived()
+    {
+        return numberOfVotesReceived;
     }
 
     @Override

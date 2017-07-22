@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * An user of the system. Users can vote in a competition for candidates.
@@ -22,7 +23,7 @@ public class User
     public User(@JsonProperty("userId") final String userId,
                 @JsonProperty("name") final String name)
     {
-        this.userId = userId;
+        this.userId = userId == null ? UUID.randomUUID().toString() : userId;
         this.name = name;
     }
 
