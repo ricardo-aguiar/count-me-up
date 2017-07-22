@@ -20,3 +20,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/count-me-up-service/count-me-up-service.iml
+/count-me-up-api/count-me-up-api.iml
+/count-me-up-api/lib/
+/count-me-up-api/target
+/count-me-up-service/target/
+.idea/
+
