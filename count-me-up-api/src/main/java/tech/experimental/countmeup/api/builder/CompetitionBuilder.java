@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Buidler for {@link Competition}
+ * Builder for {@link Competition}
  */
 public final class CompetitionBuilder
 {
@@ -15,6 +15,7 @@ public final class CompetitionBuilder
     private List<Candidate> candidates;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private int maxNumberOfVotesPerUser;
 
     public CompetitionBuilder withCompetitionId(final String competitionId)
     {
@@ -40,13 +41,19 @@ public final class CompetitionBuilder
         return this;
     }
 
+    public CompetitionBuilder withMaxNumberOfVotesPerUser(final int maxNumberOfVotesPerUser)
+    {
+        this.maxNumberOfVotesPerUser = maxNumberOfVotesPerUser;
+        return this;
+    }
+
     public Competition buildWithGeneratedId()
     {
-        return new Competition(null, candidates, startDate, endDate);
+        return new Competition(null, candidates, startDate, endDate, maxNumberOfVotesPerUser);
     }
 
     public Competition build()
     {
-        return new Competition(competitionId, candidates, startDate, endDate);
+        return new Competition(competitionId, candidates, startDate, endDate, maxNumberOfVotesPerUser);
     }
 }

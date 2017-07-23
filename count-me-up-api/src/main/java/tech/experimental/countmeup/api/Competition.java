@@ -15,25 +15,30 @@ public class Competition
     private final List<Candidate> candidates;
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
+    private final int maxNumberOfVotesPerUser;
 
     /**
      * Constructs a new competition
-     * @param competitionId The compentition ID, default to a new UUID if it is null.
+     * @param competitionId The compentition ID, default to a new UUID if it is <code>null</code>.
      * @param candidates A list of candidates taking part in the competition.
      * @param startDate The competition start date
      * @param endDate The competition end date
+     * @param maxNumberOfVotesPerUser The maximum number of votes per user allowed.
      */
     @JsonCreator
     public Competition(@JsonProperty("competitionId") final String competitionId,
                        @JsonProperty("candidates") final List<Candidate> candidates,
                        @JsonProperty("startDate") final LocalDateTime startDate,
-                       @JsonProperty("endDate") final LocalDateTime endDate)
+                       @JsonProperty("endDate") final LocalDateTime endDate,
+                       @JsonProperty("maxNumberOfVotesPerUser") final int maxNumberOfVotesPerUser)
     {
         this.competitionId = competitionId == null ? UUID.randomUUID().toString() : competitionId;
+        // Copying the list to ensure immutability
         this.candidates = candidates == null ? Collections.emptyList()
                                              : Collections.unmodifiableList(new ArrayList<>(candidates));
         this.startDate = startDate;
         this.endDate = endDate;
+        this.maxNumberOfVotesPerUser = maxNumberOfVotesPerUser;
     }
 
     public String getCompetitionId()
@@ -56,6 +61,11 @@ public class Competition
         return endDate;
     }
 
+    public int getMaxNumberOfVotesPerUser()
+    {
+        return maxNumberOfVotesPerUser;
+    }
+
     @Override
     public final boolean equals(final Object other)
     {
@@ -68,7 +78,8 @@ public class Competition
             return false;
         }
         final Competition that = (Competition) other;
-        return Objects.equals(competitionId, that.competitionId)
+        return maxNumberOfVotesPerUser == that.maxNumberOfVotesPerUser
+               && Objects.equals(competitionId, that.competitionId)
                && Objects.equals(startDate, that.startDate)
                && Objects.equals(endDate, that.endDate)
                && Objects.equals(candidates, that.candidates);
@@ -77,7 +88,7 @@ public class Competition
     @Override
     public final int hashCode()
     {
-        return Objects.hash(competitionId, candidates, startDate, endDate);
+        return Objects.hash(competitionId, candidates, startDate, endDate, maxNumberOfVotesPerUser);
     }
 
     @Override
@@ -85,9 +96,10 @@ public class Competition
     {
         return "Competition{" +
                "competitionId='" + competitionId + '\'' +
-               ", candidates=" + candidates +
-               ", startDate=" + startDate +
-               ", endDate=" + endDate +
+               ", candidates=" + candidates + '\'' +
+               ", startDate=" + startDate + '\'' +
+               ", endDate=" + endDate + '\'' +
+               ", maxNumberOfVotesPerUser=" + maxNumberOfVotesPerUser +
                '}';
     }
 }

@@ -33,7 +33,7 @@ public class VoteCastRequestTest
         }
         catch (IOException e)
         {
-            fail("Failed to de/serialise object");
+            fail("Failed to de/serialise object. Reason: " + e);
         }
     }
 }

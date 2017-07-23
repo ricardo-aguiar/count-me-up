@@ -12,29 +12,25 @@ import java.util.Collections;
 import static org.junit.Assert.fail;
 
 /**
- * Test for {@link Competition}
+ * Test for {@link ResultResponse}
  */
-public class CompetitionTest
+public class ResultResponseTest
 {
     @Test
     public void testEqualsAndHashCodeContract()
     {
-        EqualsVerifier.forClass(Competition.class).verify();
+        EqualsVerifier.forClass(ResultResponse.class).verify();
     }
 
     @Test
     public void testSerializationRoundTrip()
     {
         // Arrange
-        final Competition expected = new CompetitionBuilder().withCandidates(Collections.emptyList())
-                                                             .withStartDate(LocalDateTime.now())
-                                                             .withEndDate(LocalDateTime.now())
-                                                             .withMaxNumberOfVotesPerUser(3)
-                                                             .buildWithGeneratedId();
+        final ResultResponse expected =  new ResultResponse(Collections.emptyList());
 
         try
         {
-            final Competition actual = JsonTestUtils.roundTrip(expected, Competition.class);
+            final ResultResponse actual = JsonTestUtils.roundTrip(expected, ResultResponse.class);
 
             JsonTestUtils.assertEqualButNotSame(actual, expected);
         }

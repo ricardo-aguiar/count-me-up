@@ -35,7 +35,7 @@ public class CandidateTest
         }
         catch (IOException e)
         {
-            fail("Failed to de/serialise candidate object");
+            fail("Failed to de/serialise object. Reason: " + e);
         }
     }
 
