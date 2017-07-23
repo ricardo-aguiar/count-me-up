@@ -22,6 +22,7 @@ public class CompetitionRegistrationRequest
     @JsonCreator
     public CompetitionRegistrationRequest(@JsonProperty("competitions") final List<Competition> competitions)
     {
+        // Copying the list to ensure immutability
         this.competitions = competitions == null ? Collections.emptyList() : new ArrayList<>(competitions);
     }
 
